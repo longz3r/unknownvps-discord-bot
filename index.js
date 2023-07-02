@@ -1,5 +1,6 @@
+require('dotenv').config()
+
 // basic shit
-const config = require('./config.json');
 const { Client, GatewayIntentBits, Partials, ButtonInteraction, MessageComponentInteraction, Collection } = require('discord.js');
 const client = new Client({ partials: [Partials.Channel], intents: [
     GatewayIntentBits.Guilds,
@@ -9,13 +10,13 @@ const client = new Client({ partials: [Partials.Channel], intents: [
     GatewayIntentBits.MessageContent
 ] });
 console.time("Discord login")
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);
 
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}`)
     console.timeEnd("Discord login")
-    client.user.setActivity("tài xỉu", { type: 1 });
-    console.log("START UP SUCCESSFUL")
+    client.user.setActivity("people's VPS", { type: 3 });
+    console.log("START UP SUCCESSFULLY")
 })
 
 const messageInteractionHandler = require("./handler/messageInteractionHandler.js")

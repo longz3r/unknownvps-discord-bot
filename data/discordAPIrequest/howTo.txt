@@ -1,0 +1,9 @@
+make post request to
+https://discord.com/api/v10/applications/{client ID}/commands
+
+with header Authorization: Bot <DISCORD_BOT_TOKEN>
+
+i recommend using postman
+after entering above detail 
+copy file content in this folder and make request 
+you may need to wait up to an hour for the command to show up

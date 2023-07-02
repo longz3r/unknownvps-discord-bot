@@ -1,5 +1,5 @@
 const axios = require("axios")
-const config = require("../config.json")
+require('dotenv').config()
 
 function sendMessageToChannel(channelId, message, embeds, components) {
     const data = {
@@ -10,12 +10,13 @@ function sendMessageToChannel(channelId, message, embeds, components) {
 
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': `Bot ${config.token}`
+        'Authorization': `Bot ${process.env.BOT_TOKEN}`
     }
 
     axios.post(`https://discord.com/api/v10/channels/${channelId}/messages`, data, {
         headers: headers
     }).catch(err => {
+        console.error(err)
     })
 }
 
