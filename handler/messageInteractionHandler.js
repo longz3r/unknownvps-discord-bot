@@ -10,6 +10,9 @@
 // const withdraw = require("../commands/withdraw")
 // const howto = require("../commands/howto")
 
+const info = require("../commands/info")
+const website = require("../commands/website")
+const listvps = require("../commands/listvps")
 
 async function messageInteractionHandler(interaction) {
     console.log(`${interaction.user.tag} executed ${interaction.commandName}`)
