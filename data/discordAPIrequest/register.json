@@ -1,0 +1,13 @@
+{
+    "name": "register",
+    "type": 1,
+    "description": "Register your account",
+    "options": [
+        {
+            "name": "email",
+            "description": "Your email",
+            "type": 3,
+            "required": true
+        }
+    ]
+}

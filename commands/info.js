@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js")
 const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 
 async function info(interaction) {
-    const exampleEmbed = new EmbedBuilder()
+    const infoEmbed = new EmbedBuilder()
 	.setColor(0x0099FF)
 	.setTitle('Unknown VPS')
 	.setURL('https://longcraft.xyz')
@@ -27,7 +27,7 @@ async function info(interaction) {
     const row = new ActionRowBuilder()
         .addComponents(website);
 
-    interaction.reply({embeds: [exampleEmbed], components: [row]})
+    interaction.reply({embeds: [infoEmbed], components: [row]})
 }
 
 module.exports = info

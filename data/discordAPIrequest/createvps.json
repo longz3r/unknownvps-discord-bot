@@ -1,0 +1,19 @@
+{
+    "name": "createvps",
+    "type": 1,
+    "description": "Create your VPS",
+    "options": [
+        {
+            "name": "plan",
+            "description": "Plan of the VPS you want to create",
+            "type": 3,
+            "required": true,
+            "choices": [
+                {
+                    "name": "free",
+                    "value": "free"
+                }
+            ]
+        }
+    ]
+}

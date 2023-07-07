@@ -13,6 +13,8 @@
 const info = require("../commands/info")
 const website = require("../commands/website")
 const listvps = require("../commands/listvps")
+const createvps = require("../commands/createvps")
+const register = require("../commands/register")
 
 async function messageInteractionHandler(interaction) {
     console.log(`${interaction.user.tag} executed ${interaction.commandName}`)
