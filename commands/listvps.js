@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js")
 const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 
 async function listvps(interaction) {
-    const exampleEmbed = new EmbedBuilder()
+    const listVPSembed = new EmbedBuilder()
 	.setColor(0x0099FF)
 	.setTitle('Unknown VPS')
 	.setURL('https://longcraft.xyz')
@@ -31,16 +31,7 @@ async function listvps(interaction) {
 	.setTimestamp()
 	.setFooter({ text: '©️Unknown VPS 2023', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-
-    const website = new ButtonBuilder()
-        .setURL('https://longcraft.xyz')
-		.setLabel('Unknown VPS')
-		.setStyle(ButtonStyle.Link);
-
-    const row = new ActionRowBuilder()
-        .addComponents(website);
-
-    interaction.reply({embeds: [exampleEmbed], components: [row]})
+    interaction.reply({embeds: [listVPSembed]})
 }
 
 module.exports = listvps

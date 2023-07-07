@@ -1,0 +1,5 @@
+{
+    "name": "verifyemail",
+    "type": 1,
+    "description": "Send an verification email to your email address"
+}

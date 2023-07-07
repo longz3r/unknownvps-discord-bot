@@ -12,11 +12,17 @@ const client = new Client({ partials: [Partials.Channel], intents: [
 console.time("Discord login")
 client.login(process.env.BOT_TOKEN);
 
+const sendAPIRequest = require("./functions/sendAPIRequest")
+
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}`)
     console.timeEnd("Discord login")
     client.user.setActivity("people's VPS", { type: 3 });
     console.log("START UP SUCCESSFULLY")
+    console.time("API RESPONSE TEST")
+    await sendAPIRequest("/", "GET")
+    console.timeEnd("API RESPONSE TEST")
+
 })
 
 const messageInteractionHandler = require("./handler/messageInteractionHandler.js")

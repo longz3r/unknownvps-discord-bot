@@ -1,12 +1,21 @@
 const {ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder} = require("discord.js")
 const validateEmail = require("../utilities/validateEmail")
+const checkUserExists = require("../functions/checkUserExists")
+const sendAPIRequest = require("../functions/sendAPIRequest")
 
 async function register(interaction) {
+    if (await checkUserExists(interaction.user.id)) {
+        interaction.reply("You already registered")
+        return
+    }
+
     const email = interaction.options.getString("email")
     if (!validateEmail(email)) {
         interaction.reply("You entered an invalid email address. Please try again")
         return
     };
+
+
     const registerEmbed = new EmbedBuilder()
 	.setColor(0x0099FF)
 	.setTitle('Unknown VPS')
@@ -41,11 +50,24 @@ async function register(interaction) {
 
         if (confirmation.customId === 'yes') {
             //send request here
-            await confirmation.update({ content: `email address confirmed`, components: [], embeds: [] });
+            createUserRequestBody = {
+                "discordId": interaction.user.id,
+                "email": email
+            }
+            let createUserReponse = await sendAPIRequest("/users/create", "POST", {}, createUserRequestBody)
+            
+            if (createUserReponse.status == 200) {
+                await confirmation.update({ content: `**Account created successfully\nFor additional security please use /verifyemail**`, components: [], embeds: [] });
+            } else {
+                await confirmation.update({ content: `**Something went wrong\n This is not your fault, we will investigate it**`, components: [], embeds: [] })
+            }
+
+            
         } else if (confirmation.customId === 'no') {
             await confirmation.update({ content: 'Action cancelled', components: [], embeds: [] });
         }
     } catch (e) {
+        console.log(e)
         await interaction.editReply({ content: 'Confirmation not received within 1 minute, cancelling', components: [], embeds: [] });
     }
 }
