@@ -1,11 +1,10 @@
 const { EmbedBuilder } = require("discord.js")
 const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
-const sendAPIRequest = require("../functions/sendAPIRequest")
+// const sendAPIRequest = require("../functions/sendAPIRequest")
+const getUserInfo = require("../functions/getUserInfo")
 
 async function info(interaction) {
-	let userData = await sendAPIRequest(`/users/${interaction.user.id}`, "GET")
-	// using userData.data because the above variable is just a reponse of api reqeust
-	userData = userData.data
+	let userData = await getUserInfo(interaction.user.id)
 
     const infoEmbed = new EmbedBuilder()
 	.setColor(0x0099FF)

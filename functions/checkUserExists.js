@@ -1,8 +1,8 @@
-const sendAPIRequest = require("./sendAPIRequest")
+const getUserInfo = require("./getUserInfo")
 
 async function checkUserExists(discordId) {
-    let userData = await sendAPIRequest(`/users/${discordId}`, "GET")
-    if (userData.data == "User not found")  {
+    let userData = await getUserInfo(discordId)
+    if (userData == "User not found")  {
         return false
     }
     return true

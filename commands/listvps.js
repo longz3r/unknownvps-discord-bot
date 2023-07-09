@@ -1,37 +1,50 @@
-const { EmbedBuilder } = require("discord.js")
-const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
+const getUserInfo = require("../functions/getUserInfo")
 
 async function listvps(interaction) {
-    const listVPSembed = new EmbedBuilder()
-	.setColor(0x0099FF)
-	.setTitle('Unknown VPS')
-	.setURL('https://longcraft.xyz')
-	.setAuthor({ name: 'User info', iconURL: 'https://i.imgur.com/AfFp7pu.png'})
-	.setDescription('Some description here')
-	.setThumbnail('https://i.imgur.com/AfFp7pu.png')
-	.addFields(
-		{ name: 'Long Zer', value: 'gialong@longcraft.xyz' },
-        { name: 'Date created', value: '2/7/2023' },
-		{ name: '\u200B', value: '\u200B' },
-		{ name: 'Available VPS', value: '69 (use /listvps for detailed info)', inline: true },
-		{ name: 'Billing Status', value: 'Good Standing', inline: true },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-        { name: 'Date created', value: '2/7/2023' },
-	)
-	.setTimestamp()
-	.setFooter({ text: '©️Unknown VPS 2023', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+    let userData = await getUserInfo(interaction.user.id)
+    let fields = [
+        {
+            name: (interaction.user.tag).split("#")[0],
+            value: userData.email
+        },
+        {
+            name: `**${userData.vps.length - 1}** avaliable VPS`,
+            value: ""
+        }
+    ]
 
-    interaction.reply({embeds: [listVPSembed]})
+    for (vps of userData.vps) {
+        if (vps.id == "N/A") continue
+        fields.push(
+            {
+                name: vps.id,
+                value: "ngu"
+            }
+        )
+    }
+
+    const listVPSembed = {
+        color: 0x0099ff,
+        title: 'Unknown VPS',
+        // url: 'https://discord.js.org',
+        author: {
+            name: 'User info',
+            icon_url: 'https://i.imgur.com/AfFp7pu.png',
+            url: 'https://discord.js.org',
+        },
+        // description: 'Some description here',
+        thumbnail: {
+            url: 'https://i.imgur.com/AfFp7pu.png',
+        },
+        fields: fields,
+        timestamp: new Date().toISOString(),
+        footer: {
+            text: '©️Unknown VPS 2023',
+            icon_url: 'https://i.imgur.com/AfFp7pu.png',
+        },
+    };
+
+    interaction.reply({embeds: [listVPSembed], ephemeral: true})
 }
 
 module.exports = listvps
