@@ -44,6 +44,9 @@ async function register(interaction) {
         components: [row],
         embeds: [registerEmbed]
     })
+
+		// Show the modal to the user
+
     const collectorFilter = i => i.user.id === interaction.user.id;
     try {
         const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60000 });

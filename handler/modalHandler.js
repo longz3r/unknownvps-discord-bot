@@ -1,4 +1,4 @@
-// const withdrawalInformation = require("../modalSubmit/withdrawalInformation")
+const verifyEmail = require("../modalSubmit/verifyEmail")
 
 async function modalHandler(interaction) {
     console.log(`${interaction.user.tag} submitted modal ${interaction.customId}`)

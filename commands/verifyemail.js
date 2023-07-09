@@ -1,6 +1,8 @@
 const sendAPIRequest = require("../functions/sendAPIRequest")
 const getUserInfo = require("../functions/getUserInfo")
 
+const verifyModal = require("../data/modal/verifyEmail")
+
 async function verifyemail(interaction) {
     let userData = await getUserInfo(interaction.user.id)
     if (userData.verified == "true") {
@@ -12,10 +14,8 @@ async function verifyemail(interaction) {
         "discordId": interaction.user.id,
         "email": userData.email
     })
-    interaction.reply({
-        content: `An email has been sent to **${userData.email}**\nMake sure to check your spam mailbox`,
-        ephemeral: true
-    })
+
+    interaction.showModal(verifyModal)
 }
 
 module.exports = verifyemail
