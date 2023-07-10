@@ -17,14 +17,14 @@ async function register(interaction) {
 
 
     const registerEmbed = new EmbedBuilder()
-	.setColor(0x0099FF)
-	.setTitle('Unknown VPS')
-	.setURL('https://longcraft.xyz')
-	.setAuthor({ name: 'Confirm your email address', iconURL: 'https://i.imgur.com/AfFp7pu.png'})
-	.setDescription(`Is **${email}** your email?`)
-	.setThumbnail('https://i.imgur.com/AfFp7pu.png')
-	.setTimestamp()
-	.setFooter({ text: '©️Unknown VPS 2023', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+        .setColor(0x0099FF)
+        .setTitle('Unknown VPS')
+        .setURL('https://longcraft.xyz')
+        .setAuthor({ name: 'Confirm your email address', iconURL: 'https://i.imgur.com/AfFp7pu.png'})
+        .setDescription(`Is **${email}** your email?`)
+        .setThumbnail('https://i.imgur.com/AfFp7pu.png')
+        .setTimestamp()
+        .setFooter({ text: '©️Unknown VPS 2023', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
     const yesButton = new ButtonBuilder()
         .setCustomId("yes")
 		.setLabel('Yes')
@@ -60,7 +60,7 @@ async function register(interaction) {
             let createUserReponse = await sendAPIRequest("/users/create", "POST", {}, createUserRequestBody)
             
             if (createUserReponse.status == 200) {
-                await confirmation.update({ content: `**Account created successfully\nFor additional security please use /verifyemail**`, components: [], embeds: [] });
+                await confirmation.update({ content: `Account created successfully\nIn order to use our services you need to verify your email by using **/verifyemail**`, components: [], embeds: [] });
             } else {
                 await confirmation.update({ content: `**Something went wrong\n This is not your fault, we will investigate it**`, components: [], embeds: [] })
             }

@@ -18,7 +18,10 @@ async function withdrawalInformation(interaction) {
         replyMessage = verifyEmailResponse.data
     }
 
-    interaction.reply(replyMessage)
+    interaction.reply({
+        content: replyMessage,
+        ephemeral: true
+    })
 }
 
 module.exports = withdrawalInformation

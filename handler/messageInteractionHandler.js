@@ -11,6 +11,7 @@
 // const howto = require("../commands/howto")
 
 const checkUserExists = require("../functions/checkUserExists")
+const getUserInfo = require("../functions/getUserInfo")
 
 const info = require("../commands/info")
 const listvps = require("../commands/listvps")
@@ -22,8 +23,12 @@ const verifyemail = require("../commands/verifyemail")
 
 async function messageInteractionHandler(interaction) {
     console.log(`${interaction.user.tag} executed ${interaction.commandName}`)
-    if (!await checkUserExists(interaction.user.id) && interaction.commandName != "register") {
-        interaction.reply("Please register before using this command by using /register")
+    let userData = await getUserInfo(interaction.user.id)
+    if (userData == "User not found" && interaction.commandName != "register") {
+        interaction.reply("Please register before using this command by using **/register**")
+        return
+    } else if (userData.verified == "false" && interaction.commandName != "verifyemail") {
+        interaction.reply("Please verify your email before using this command by using **/verifyemail**")
     } else {
         command = eval(interaction.commandName)
         command(interaction)
