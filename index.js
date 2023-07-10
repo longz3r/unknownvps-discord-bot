@@ -28,10 +28,15 @@ client.on('ready', async () => {
 const messageInteractionHandler = require("./handler/messageInteractionHandler.js")
 const selectMenuHandler = require("./handler/selectMenuHandler")
 const modalHandler = require("./handler/modalHandler")
+const userCommmandHandler = require("./handler/userCommandHandler")
 
 client.on("interactionCreate", async (interaction) => {
     if (interaction.isCommand()) {
-        messageInteractionHandler(interaction)
+        if (interaction.isChatInputCommand()) {
+            messageInteractionHandler(interaction)
+        } else if (interaction.isUserContextMenuCommand()) {
+            userCommmandHandler(interaction)
+        }
     } else if (interaction.isStringSelectMenu()) {
         selectMenuHandler(interaction)
     } else if (interaction.isModalSubmit()) {
