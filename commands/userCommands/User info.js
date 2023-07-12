@@ -1,6 +1,6 @@
 const getUserInfo = require("../../functions/getUserInfo")
 const checkUserExists  = require("../../functions/checkUserExists")
-
+const { EmbedBuilder } = require('discord.js');
 
 async function userinfo(interaction) {
     if (!await checkUserExists(interaction.targetId)) {
