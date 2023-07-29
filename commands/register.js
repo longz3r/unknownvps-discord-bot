@@ -42,7 +42,8 @@ async function register(interaction) {
     
     const response = await interaction.reply({
         components: [row],
-        embeds: [registerEmbed]
+        embeds: [registerEmbed],
+	ephemeral: true
     })
 
 		// Show the modal to the user
