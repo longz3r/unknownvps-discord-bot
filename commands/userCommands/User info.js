@@ -19,7 +19,7 @@ async function userinfo(interaction) {
 	// .setDescription('Some description here')
 	.setThumbnail('https://i.imgur.com/AfFp7pu.png')
 	.addFields(
-		{ name: `Username:`, value: interaction.targetId },
+		{ name: `Username:`, value: `<@${interaction.targetId}>` },
 		{ name: `Email: `, value: userData.email },
         // { name: 'Date created', value: '2/7/2023' },
 		{ name: '\u200B', value: '\u200B' },

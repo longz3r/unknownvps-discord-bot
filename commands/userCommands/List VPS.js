@@ -11,7 +11,7 @@ async function listvps(interaction) {
     let userData = await getUserInfo(interaction.targetId)
     let fields = [
         {
-            name: interaction.targetId,
+            name: `<@${interaction.targetId}>`,
             value: userData.email
         },
         {
