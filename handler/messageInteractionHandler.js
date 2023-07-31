@@ -19,7 +19,11 @@ const createvps = require("../commands/createvps")
 const register = require("../commands/register")
 const verifyemail = require("../commands/verifyemail")
 
+//admin slash commands
+const addvps = require("../commands/admin/addvps")
 
+const adminCommands = ["addvps"]
+const allowedUser = ["823863369060581384", "744091948985614447"]
 
 async function messageInteractionHandler(interaction) {
     console.log(`${interaction.user.tag} executed ${interaction.commandName}`)
@@ -29,9 +33,19 @@ async function messageInteractionHandler(interaction) {
         return
     } else if (userData.verified == "false" && interaction.commandName != "verifyemail") {
         interaction.reply("Please verify your email before using this command by using **/verifyemail**")
-    } else {
+    } else if (!adminCommands.includes(interaction.commandName)) {
         command = eval(interaction.commandName)
         command(interaction)
+    } else {
+        if (!allowedUser.includes(interaction.user.id)) {
+            interaction.reply({
+                content: "You are not allowed to use this command",
+                ephemeral: true
+            })
+        } else {
+            command = eval(interaction.commandName)
+            command(interaction)
+        }
     }
 }
 

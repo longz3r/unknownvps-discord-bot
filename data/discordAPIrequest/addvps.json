@@ -1,0 +1,25 @@
+{
+    "name": "addvps",
+    "type": 1,
+    "description": "ADMIN ONLY",
+    "options": [
+        {
+            "name": "name",
+            "description": "name",
+            "type": 3,
+            "required": true
+        },
+        {
+            "name": "os",
+            "description": "os",
+            "type": 3,
+            "required": true,
+            "choices": [
+                {
+                    "name": "debian",
+                    "value": "debian"
+                }
+            ]
+        }
+    ]
+}

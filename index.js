@@ -1,7 +1,8 @@
 require('dotenv').config()
+const process = require("process")
 
 // basic shit
-const { Client, GatewayIntentBits, Partials, ButtonInteraction, MessageComponentInteraction, Collection } = require('discord.js');
+const { Client, GatewayIntentBits, Partials } = require('discord.js');
 const client = new Client({ partials: [Partials.Channel], intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -19,10 +20,24 @@ client.on('ready', async () => {
     console.timeEnd("Discord login")
     client.user.setActivity("people's VPS", { type: 3 });
     console.log("START UP SUCCESSFULLY")
-    console.time("API RESPONSE TEST")
-    await sendAPIRequest("/", "GET")
-    console.timeEnd("API RESPONSE TEST")
-
+    let APIresponse = await sendAPIRequest("/ping", "GET")
+    try {
+        if (APIresponse.data.message == "Pong!") {
+            console.log(`API response time: ${APIresponse.headers["x-response-time"]}`)
+        } else {
+            console.log("API TEST FAILED TERMINATING IN 5 SECONDS")
+            setTimeout(() => {
+                process.exit(1)
+            }, 5000)
+        }
+    } catch (err) {
+        if (APIresponse == undefined) {
+            console.log("API TEST FAILED TERMINATING IN 5 SECONDS")
+            setTimeout(() => {
+                process.exit(1)
+            }, 5000)
+        }
+    }
 })
 
 const messageInteractionHandler = require("./handler/messageInteractionHandler.js")
