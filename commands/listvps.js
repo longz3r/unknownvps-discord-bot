@@ -70,13 +70,9 @@ async function listvps(interaction) {
         // url: 'https://discord.js.org',
         author: {
             name: 'User info',
-            icon_url: 'https://i.imgur.com/AfFp7pu.png',
-            url: 'https://discord.js.org',
+            icon_url: 'https://media.discordapp.net/attachments/1044579631350685787/1137645186139312188/unknown_vps3x.png',
         },
         // description: 'Some description here',
-        thumbnail: {
-            url: 'https://i.imgur.com/AfFp7pu.png',
-        },
         fields: fields,
         timestamp: new Date().toISOString(),
         footer: {
