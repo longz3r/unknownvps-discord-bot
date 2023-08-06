@@ -1,27 +1,69 @@
 const getUserInfo = require("../functions/getUserInfo")
+const getVpsInfo = require("../functions/getVpsInfo")
 
 async function listvps(interaction) {
     let userData = await getUserInfo(interaction.user.id)
+    let vpsData = await getVpsInfo(userData.vps.id)
+    console.log(vpsData)
     let fields = [
         {
-            name: (interaction.user.tag).split("#")[0],
+            name: interaction.user.tag,
             value: userData.email
         },
         {
-            name: `**${userData.vps.length - 1}** avaliable VPS`,
+            name: `ID`,
+            value: userData.vps.id,
+            inline: true,
+        }, 
+        {
+            name: `Name`,
+            value: vpsData.name,
+            inline: true,
+        },
+        {
+            name: `OS`,
+            value: vpsData.os,
+            inline: true,
+        },
+        {
+            name: "",
             value: ""
+        },
+        {
+            name: `IP`,
+            value: vpsData.ip,
+            inline: true,
+        },
+        {
+            name: `Port`,
+            value: vpsData.port,
+            inline: true,
+        },
+        {
+            name: "",
+            value: ""
+        },
+        {
+            name: `User`,
+            value: vpsData.user,
+            inline: true,
+        },
+        {
+            name: `Password`,
+            value: vpsData.pass,
+            inline: true,
         }
     ]
 
-    for (vps of userData.vps) {
-        if (vps.id == "N/A") continue
-        fields.push(
-            {
-                name: vps.id,
-                value: "ngu"
-            }
-        )
-    }
+    // for (vps of userData.vps) {
+    //     if (vps.id == "N/A") continue
+    //     fields.push(
+    //         {
+    //             name: vps.id,
+    //             value: "ngu"
+    //         }
+    //     )
+    // }
 
     const listVPSembed = {
         color: 0x0099ff,

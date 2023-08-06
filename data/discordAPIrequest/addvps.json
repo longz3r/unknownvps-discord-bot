@@ -20,6 +20,24 @@
                     "value": "debian"
                 }
             ]
+        },
+        {
+            "name": "user",
+            "description": "user",
+            "type": 3,
+            "required": true
+        },
+        {
+            "name": "pass",
+            "description": "pass",
+            "type": 3,
+            "required": true
+        },
+        {
+            "name": "ip",
+            "description": "ip",
+            "type": 3,
+            "required": true
         }
     ]
 }
