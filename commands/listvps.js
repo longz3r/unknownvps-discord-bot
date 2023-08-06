@@ -4,7 +4,6 @@ const getVpsInfo = require("../functions/getVpsInfo")
 async function listvps(interaction) {
     let userData = await getUserInfo(interaction.user.id)
     let vpsData = await getVpsInfo(userData.vps.id)
-    console.log(vpsData)
     let fields = [
         {
             name: interaction.user.tag,
