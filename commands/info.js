@@ -10,7 +10,7 @@ async function info(interaction) {
 	.setColor(0x0099FF)
 	.setTitle('Unknown VPS')
 	// .setURL('https://longcraft.xyz')
-	.setAuthor({ name: 'User info', iconURL: 'https://i.imgur.com/AfFp7pu.png'})
+	.setAuthor({ name: 'User info', iconURL: 'https://media.discordapp.net/attachments/1044579631350685787/1137645186139312188/unknown_vps3x.png'})
 	// .setDescription('Some description here')
 	.setThumbnail('https://i.imgur.com/AfFp7pu.png')
 	.addFields(
@@ -22,7 +22,7 @@ async function info(interaction) {
 		// { name: 'Billing Status', value: 'Good Standing', inline: true },
 	)
 	.setTimestamp()
-	.setFooter({ text: '©️Unknown VPS 2023', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+	.setFooter({ text: '©️Unknown VPS 2023', iconURL: 'https://media.discordapp.net/attachments/1044579631350685787/1137645186139312188/unknown_vps3x.png' });
 
 
     interaction.reply({embeds: [infoEmbed], ephemeral: true})
