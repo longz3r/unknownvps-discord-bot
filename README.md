@@ -27,29 +27,29 @@ _If you have any questions or encounter issues related to the integration with t
 
 1. Clone the repository using the following command:
 
-   ``````
+   ```shell
    git clone https://github.com/longz3r/unknown-discord-bot.git
-   ``````
+   ```
 
 2. Navigate to the repository's root folder:
 
-   ``````
+   ```shell
    cd unknownvps-discord-bot
-   ``````
+   ```
 
 3. Install the required dependencies by running:
 
-   ``````
+   ```shell
    npm install
-   ``````
+   ```
 
 4. Register the necessary Slash Commands with the Discord API by making a POST request. Replace `<client id>` with your Discord bot's client ID and `<discord bot token>` with your bot's token. You can make a POST request to the following URL with the specified headers:
 
-   ``````
+   ```http
    POST https://discord.com/api/v10/applications/<client id>/commands
    Headers:
    - Authorization: Bot <discord bot token>
-   ``````
+   ```
 
    For more information, refer to the [Discord API documentation](https://discord.com/developers/docs/interactions/slash-commands).
 
