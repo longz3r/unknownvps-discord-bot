@@ -4,11 +4,11 @@ This repository contains a Discord bot built using discord.js v14, designed to b
 
 ## Staying Up to Date with the API Repository
 
-To ensure that this music bot remains up to date with the latest features and improvements from the API, it is closely integrated with the [`unknownpersonog/unknownvps-v2`](https://github.com/unknownpersonog/unknownvps-v2/) repository. This API repository contains the essential components that this bot relies on.
+To ensure that this discord bot remains up to date with the latest features and improvements from the API, it is closely integrated with the [`unknownpersonog/unknownvps-v2`](https://github.com/unknownpersonog/unknownvps-v2/) repository. This API repository contains the essential components that this bot relies on.
 
-Whenever changes are made to the API repository, they will be tested and integrated into this music bot's codebase to keep it synchronized and functioning seamlessly with the latest API enhancements.
+Whenever changes are made to the API repository, they will be tested and integrated into this discord bot's codebase to keep it synchronized and functioning seamlessly with the latest API enhancements.
 
-Feel free to explore the [`unknownpersonog/unknownvps-v2`](https://github.com/unknownpersonog/unknownvps-v2/) repository to understand the API's capabilities and how it complements this music bot.
+Feel free to explore the [`unknownpersonog/unknownvps-v2`](https://github.com/unknownpersonog/unknownvps-v2/) repository to understand the API's capabilities and how it complements this discord bot.
 
 ---
 
