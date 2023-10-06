@@ -4,7 +4,8 @@ require('dotenv').config()
 async function sendHttpRequest(endpoint, method, headers={}, body={}) {
 
     headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-access-token': process.env.ACCESS_TOKEN
     }
 
     if (method == "POST") {
